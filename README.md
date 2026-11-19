@@ -4,9 +4,10 @@ A client-side Fabric mod for Minecraft **1.21.11** that adds a blue **(copy)** b
 
 ## Features
 
-- A blue **(copy)** button appears at the end of every chat message
+- A blue **(copy)** button appears after every player chat message
 - Hover over it to see the **Copy Text** tooltip
-- Click it to copy the full message to your clipboard
+- Click it to copy only the message (not the player's name) to your clipboard
+- Server messages (join/leave, announcements, command feedback) don't get a button
 
 ## Usage
 
@@ -18,7 +19,7 @@ A client-side Fabric mod for Minecraft **1.21.11** that adds a blue **(copy)** b
 ## Requirements
 
 - Minecraft 1.21.11
-- [Fabric Loader](https://fabricmc.net/use/) 0.20.1 or newer
+- [Fabric Loader](https://fabricmc.net/use/) 0.18.2 or newer
 - [Fabric API](https://modrinth.com/mod/fabric-api)
 - Java 21 or newer
 
@@ -41,12 +42,12 @@ The built jar will be in `build/libs/`.
 
 ## Notes
 
-- The button is added to all chat lines, including system messages such as join/leave messages and server announcements.
-- The copied text is the full line as shown in chat, including the player name prefix.
+- Only signed player chat gets the button. On servers that send player chat as plain system messages (some plugins do this), the button won't show up.
+- If a server uses a custom chat format, the mod falls back to copying the whole line.
 
 ## How it works
 
-`ChatComponentMixin` hooks into Minecraft's `ChatComponent.addMessage` and appends a blue `(copy)` component with a hover event (`Copy Text`) and a click event (copy to clipboard) to each message.
+`ChatComponentMixin` hooks into Minecraft's `ChatComponent.addMessage` and appends a blue `(copy)` component with a hover event (`Copy Text`) and a click event (copy to clipboard) to each signed player message.
 
 ## License
 
