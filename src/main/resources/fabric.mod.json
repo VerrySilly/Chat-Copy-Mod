@@ -1,6 +1,6 @@
 {
 	"schemaVersion": 1,
-	"id": "vanillah-mod",
+	"id": "chat-copy",
 	"version": "${version}",
 	"name": "Chat Copy",
 	"description": "Adds a blue (copy) button after every chat message. Click it to copy the message.",
